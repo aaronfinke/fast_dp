@@ -21,10 +21,12 @@ def image2template(filename):
     # patterns is a dictionary of possible regular expressions with
     # the format strings to put the file name back together
 
+    # patterns = {r'([^\.]*)\.([0-9]+)\Z': '%s.%s%s',
+    #             r'(.*)_([0-9]*)\.(.*)': '%s_%s.%s',
+    #             r'(.*?)([0-9]*)\.(.*)': '%s%s.%s'}
     patterns = {r'([^\.]*)\.([0-9]+)\Z': '%s.%s%s',
                 r'(.*)_([0-9]*)\.(.*)': '%s_%s.%s',
                 r'(.*?)([0-9]*)\.(.*)': '%s%s.%s'}
-
     for pattern in pattern_keys:
         match = re.compile(pattern).match(filename)
 
@@ -38,8 +40,7 @@ def image2template(filename):
 
             for digit in string.digits:
                 number = number.replace(digit, '#')
-
-            return patterns[pattern].format(prefix, number, exten)
+            return patterns[pattern].replace("%s","{}").format(prefix, number, exten)
 
     raise RuntimeError('filename {} not understood as a template'.format(
           filename))
@@ -105,12 +106,8 @@ def find_matching_images(template, directory):
     # fix to a problem reported by Joel B.
 
     length = template.count('#')
-    print(re.escape(template))
     regexp_text = re.escape(template).replace('\\#' * length,
-                                              '([0-9]{{}})'.format(length))
-    print(length)
-    print(template)
-    print(regexp_text)
+                                              '([0-9]{{{0}}})'.format(length))
     regexp = re.compile(regexp_text)
 
     images = []
@@ -122,7 +119,6 @@ def find_matching_images(template, directory):
             images.append(int(match.group(1)))
 
     images.sort()
-
     return images
 
 

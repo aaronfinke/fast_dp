@@ -154,6 +154,7 @@ def failover_cbf(cbf_file):
     header = {}
 
     header['two_theta'] = 0.0
+    header['extra_text'] = ""
 
     for record in open_file(cbf_file):
         if '_array_data.data' in record:

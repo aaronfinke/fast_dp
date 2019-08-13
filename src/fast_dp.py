@@ -324,7 +324,7 @@ class FastDP:
                     else:
                         et = et+line+"\n"
             self._metadata['extra_text'] = et
-
+        print(self._metadata)
         write('Extra commands: {}'.format(self._metadata['extra_text']))
 
         try:
@@ -338,7 +338,7 @@ class FastDP:
             if fdpelogpath:
                 try:
                     shutil.copyfile('fast_dp.error', os.path.join(fdpelogpath, fdpelogprefix+'fast_dp.error'))
-                    write('Archived fast_dp.error to {}'.format(os.path.join(fdpelogpath,fdpelogprefix+'fast_dp.error'))) 
+                    write('Archived fast_dp.error to {}'.format(os.path.join(fdpelogpath,fdpelogprefix+'fast_dp.error')))
                 except:
                     write('fast_dp.error not archived to {}'.format(os.path.join(fdpelogpath,fdpelogprefix+'fast_dp.error')))
             return
