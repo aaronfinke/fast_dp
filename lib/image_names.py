@@ -105,6 +105,7 @@ def find_matching_images(template, directory):
     # fix to a problem reported by Joel B.
 
     length = template.count('#')
+    print(re.escape(template))
     regexp_text = re.escape(template).replace('\\#' * length,
                                               '([0-9]{{}})'.format(length))
     print(length)
