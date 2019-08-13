@@ -86,7 +86,7 @@ def image2template_directory(filename):
 
     image = os.path.split(filename)[-1]
     template = image2template(image)
-
+    print("image is {}, template is {}".format(image, template))
     return template, directory
 
 
