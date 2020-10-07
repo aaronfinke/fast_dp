@@ -100,7 +100,7 @@ def open_file(filename, mode='rb', url=False):
 def failover_hdf5(hdf5_file):
     t0 = time.time()
     db = DataBlockFactory.from_filenames([hdf5_file])[0]
-    sweep = db.extract_sequences()[0]
+    sweep = db.extract_sweeps()[0]
     t1 = time.time()
     write('Reading {} took {:.2f}s'.format(hdf5_file, t1-t0))
     d = sweep.get_detector()
