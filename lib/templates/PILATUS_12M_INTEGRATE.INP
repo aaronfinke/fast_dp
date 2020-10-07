@@ -17,7 +17,7 @@ MAXIMUM_NUMBER_OF_JOBS={no_jobs:d}
 NY={nx:d} NX={ny:d} QX={qx:.5f} QY={qy:.5f}
 !ORGX={orgx:.1f} ORGY={orgy:.1f}
 ORGX=-163.0 ORGY=-1.6
-ROTATION_AXIS= 1.0 0.0 0.0
+ROTATION_AXIS= -1.0 0.0 0.0
 DETECTOR_DISTANCE={distance:.2f}
 X-RAY_WAVELENGTH={wavelength:5f}
 OSCILLATION_RANGE={oscillation:.3f}
