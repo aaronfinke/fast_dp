@@ -6,3 +6,5 @@
 .git-notifier*
 git-notifier.log
 .gitversion
+fast_dp.ini
+fast_rdp.ini
